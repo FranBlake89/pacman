@@ -42,7 +42,7 @@ var score = 0;
 
 
 function gameover(score){
-    if(score == 50){
+    if(score == 1570){
         alert('fin del juego');
         $('#restart').toggle();
     }
