@@ -46,9 +46,14 @@ div#pacman{
     width: 20px;
     height: 20px;
     position: absolute;
-
-
 }
+div.cherry{
+    background: url('img/cherry.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+}
+
 .container{
     position: relative;
     display: flex;

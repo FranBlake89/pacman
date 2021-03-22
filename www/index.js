@@ -17,7 +17,7 @@ var Mundo = [
     [1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 1, 2, 2, 2, 1, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 1, 0, 1],
     [1, 0, 0, 0, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 0, 0, 1],
-    [1, 0, 1, 1, 2, 1, 2, 1, 1, 0, 0, 1, 1, 2, 1, 2, 0, 0, 1, 1],
+    [1, 0, 1, 1, 2, 1, 2, 1, 1, 0, 0, 1, 1, 2, 1, 2, 0, 3, 1, 1],
     [1, 0, 1, 1, 2, 1, 2, 1, 0, 0, 0, 0, 1, 2, 1, 2, 1, 1, 1, 1],
     [1, 0, 1, 1, 2, 1, 2, 1, 0, 0, 0, 0, 1, 2, 1, 2, 1, 1, 1, 1],
     [1, 0, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 2, 0, 0, 1, 1],
@@ -37,12 +37,10 @@ var pacman = {
     y: 1 * 35
 };
 
-
 var score = 0;
 
-
 function gameover(score){
-    if(score == 1570){
+    if(score == 1620){
         alert('fin del juego');
         $('#restart').toggle();
     }
@@ -61,8 +59,11 @@ function MuestraMundo() {
             else if (Mundo[i][j] == 2)
                 salida += "<div class='coin'></div>";
 
-            if (Mundo[i][j] == 0)
+            else if (Mundo[i][j] == 0)
                 salida += "<div class='empty'></div>";
+            
+            else if (Mundo[i][j] == 3)
+                salida += "<div class='cherry'></div>";
         }
         salida += "\n</div>";
     }
@@ -96,8 +97,14 @@ function fill() {    // condiciones de salida
                     score += 10;
                     $('#score').val(score);
                     MuestraMundo();
-                    gameover(score);
-                    
+                    gameover(score);                    
+                }
+                else if(Mundo[y][nuevox] == 3){
+                    Mundo[y][nuevox] = 0;
+                    score += 50;
+                    $('#score').val(score);
+                    MuestraMundo();
+                    gameover(score);                    
                 }
             }
         }
@@ -117,6 +124,13 @@ function fill() {    // condiciones de salida
                     gameover(score);
                     
                 }
+                else if(Mundo[y][nuevox] == 3){
+                    Mundo[y][nuevox] = 0;
+                    score += 50;
+                    $('#score').val(score);
+                    MuestraMundo();
+                    gameover(score);                    
+                }
             }  
 
         }
@@ -133,8 +147,14 @@ function fill() {    // condiciones de salida
                     score += 10;
                     $('#score').val(score);
                     MuestraMundo();
-                    gameover(score);
-                    
+                    gameover(score);                    
+                }
+                else if(Mundo[nuevoy][x] == 3){
+                    Mundo[nuevoy][x] = 0;
+                    score += 50;
+                    $('#score').val(score);
+                    MuestraMundo();
+                    gameover(score);                    
                 }
             }   
 
@@ -152,8 +172,14 @@ function fill() {    // condiciones de salida
                     score += 10;
                     $('#score').val(score);
                     MuestraMundo();
-                    gameover(score);
-                    
+                    gameover(score);                    
+                }
+                else if(Mundo[nuevoy][x] == 3){
+                    Mundo[nuevoy][x] = 0;
+                    score += 50;
+                    $('#score').val(score);
+                    MuestraMundo();
+                    gameover(score);                    
                 }
             }
         }
